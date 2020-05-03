@@ -1,0 +1,8 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "sensegiz_social_distancing",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}
