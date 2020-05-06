@@ -7,14 +7,26 @@ export class LoginStatusService {
 
   constructor() { }
 
-  loginstatus(){
-  	var status = localStorage.getItem('sensegizLogin')
+  adminLoginStatus(){
+  	var status = localStorage.getItem('sensegizAdminLogin')
   	if(status){
   		return true
   	}
   	else{
   		return false
   	}
+  }
+
+
+  getAdminLogin(){
+    var status = localStorage.getItem('sensegizAdminLogin')
+    console.log("login==",status)
+    if(status){
+      return status
+    }
+    else{
+      return false
+    }
   }
 
 

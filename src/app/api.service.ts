@@ -14,7 +14,7 @@ export class ApiService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
     var url = this.host + '/login'
-    
+
     return new Promise((resolve,reject)=>{
     	this.http.post(url,data,httpOptions).subscribe(res=>{
     		resolve(res)
@@ -23,7 +23,25 @@ export class ApiService {
 
   }
 
- 
+
+
+
+
+  getUserAssigned(data){
+  	const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    var url = this.host + '/appAdminAssignView'
+
+    return new Promise((resolve,reject)=>{
+    	this.http.post(url,data,httpOptions).subscribe(res=>{
+    		resolve(res)
+    	})
+    })
+
+  }
+
+
 
 
 }

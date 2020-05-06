@@ -26,14 +26,14 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      var status = this.login.loginstatus()
-      if(status){
+      var status = this.login.adminLoginStatus()
+      /*if(status){
         this.router.navigate(['/home'])
       }
       else{
         this.router.navigate(['/login'])
 
-      }
+      }*/
     });
   }
 }

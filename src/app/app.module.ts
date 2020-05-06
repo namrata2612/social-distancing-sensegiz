@@ -12,22 +12,25 @@ import { QRScanner } from '@ionic-native/qr-scanner/ngx';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BLE } from '@ionic-native/ble/ngx';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports:
    [
-   BrowserModule, 
+   BrowserModule,
    IonicModule.forRoot(),
    ReactiveFormsModule,
    AppRoutingModule,
-   HttpClientModule
+   HttpClientModule,
+   BrowserAnimationsModule
    ],
   providers: [
     StatusBar,
     QRScanner,
-    
+    BLE,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

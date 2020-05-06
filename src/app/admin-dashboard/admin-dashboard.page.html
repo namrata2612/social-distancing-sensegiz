@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <span class="admintool">
+      <ion-icon size="large" name="home"></ion-icon>
+      <ion-title>Dashboard</ion-title>
+      <ion-button   (click)="logout()">Logout</ion-button>
+    </span>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<mat-tab-group mat-stretch-tabs>
+  <mat-tab label="Device Assign">
+  	<ion-button class="scan" (click)="scanner()">Scan</ion-button>
+
+  </mat-tab>
+  <mat-tab label="Assigned View">
+    <table class="table table-borderless">
+        <tr>
+          <th>#</th>
+          <th>Device Id</th>
+          <th>Device Name</th>
+        </tr>
+        <tbody>
+          <tr *ngFor="let a of userAssigned;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{a.deviceId}}</td>
+            <td>{{a.deviceName}}</td>
+          </tr>
+        </tbody>
+    </table>
+  </mat-tab>
+</mat-tab-group>
+
+
+
+</ion-content>
