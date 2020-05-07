@@ -12,7 +12,17 @@
 <mat-tab-group mat-stretch-tabs>
   <mat-tab label="Device Assign">
   	<ion-button class="scan" (click)="scanner()">Scan</ion-button>
-
+    <form [formGroup]="deviceDetails" (ngSubmit)="submit(deviceDetails.value)" >
+      <ion-item>
+        <ion-label position="stacked">Device Id</ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Device Name</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-button type="submit">Submit</ion-button>
+    </form>
   </mat-tab>
   <mat-tab label="Assigned View">
     <table class="table table-borderless">

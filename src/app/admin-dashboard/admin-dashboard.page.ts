@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { LoginStatusService } from '../login-status.service';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
+import { FormGroup,Validators,FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -13,13 +14,22 @@ export class AdminDashboardPage implements OnInit {
 
 userAssigned:any=[]
 loginData:any
+deviceDetails:any
 
   constructor(
     private api:ApiService,
     private login:LoginStatusService,
     private router:Router,
     private qrScanner: QRScanner,
-    ) { }
+    private fb:FormBuilder,
+    ) {
+      this.deviceDetails=this.fb.group({
+        deviceId:['',Validators.required],
+        deviceName:['',Validators.required],
+
+      })
+
+    }
 
   ngOnInit() {
     var status = this.login.adminLoginStatus()
@@ -65,7 +75,9 @@ scanner(){
        // start scanning
        let scanSub = this.qrScanner.scan().subscribe((text: string) => {
          console.log('Scanned something', text);
-
+         this.deviceDetails.patchValue({
+           deviceId:text
+         })
          this.qrScanner.hide(); // hide camera preview
          scanSub.unsubscribe(); // stop scanning
        });
@@ -73,7 +85,7 @@ scanner(){
      } else if (status.denied) {
        // camera permission was permanently denied
        // you must use QRScanner.openSettings() method to guide the user to the settings page
-       // then they can grant the permission from there
+       // then they can grant the permission from there.
      } else {
        // permission was denied, but not permanently. You can ask for permission again at a later time.
      }
@@ -82,13 +94,22 @@ scanner(){
 
 }
 
+submit(data){
+  this.returnUserId()
 
+   data.userId=this.loginData.userId
+
+  this.api.assignUser(data).then((res:any)=>{
+    console.log("res====",res)
+    if(res.status){
+    }
+  })
+}
 
 logout(){
   this.login.logout()
   this.router.navigate(['/admin-login'])
 }
-
 
 
 }
