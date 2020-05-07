@@ -8,21 +8,33 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="background: none transparent;">
 <mat-tab-group mat-stretch-tabs>
   <mat-tab label="Device Assign">
-  	<ion-button class="scan" (click)="scanner()">Scan</ion-button>
-    <form [formGroup]="deviceDetails" (ngSubmit)="submit(deviceDetails.value)" >
-      <ion-item>
-        <ion-label position="stacked">Device Id</ion-label>
-        <ion-input type="number"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Device Name</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-      <ion-button type="submit">Submit</ion-button>
-    </form>
+    <div class="circle" (click)="brCodeScanner()">Scan</div>
+    <p class="center"> Tap to scan</p>
+
+    <ion-card>
+      <ion-card-header> Device details</ion-card-header>
+      <ion-card-content>
+          <form [formGroup]="deviceDetails" (ngSubmit)="submit(deviceDetails.value)">
+            <ion-item>
+              <ion-label position="stacked">Device Id</ion-label>
+              <ion-input type="number" formControlName="deviceId"></ion-input>
+
+              </ion-item>
+                <ion-item>
+                  <ion-label position="stacked">Device Name</ion-label>
+                  <ion-input type="text" formControlName="deviceName"></ion-input>
+
+                  </ion-item><br>
+                    <ion-button expand="full" type="submit">Submit</ion-button>
+          </form>
+
+      </ion-card-content>
+
+    </ion-card>
+
   </mat-tab>
   <mat-tab label="Assigned View">
     <table class="table table-borderless">

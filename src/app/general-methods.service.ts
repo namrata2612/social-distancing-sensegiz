@@ -10,7 +10,7 @@ export class GeneralMethodsService {
 
 
   async toast(msg){
-  		
+
   	const toast = await this.toastctrl.create({
       message: msg,
       position: 'bottom',
@@ -18,6 +18,6 @@ export class GeneralMethodsService {
   		toast.present();
 
   		setTimeout(function(){ toast.dismiss() }, 3000);
-  	}
+  }
 
 }

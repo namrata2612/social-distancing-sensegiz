@@ -43,12 +43,12 @@ export class ApiService {
 
 
 
-  
+
   assignUser(data){
   	const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    var url = this.host + '/appAdminAssignView'
+    var url = this.host + '/appAssignUser'
 
     return new Promise((resolve,reject)=>{
     	this.http.post(url,data,httpOptions).subscribe(res=>{
