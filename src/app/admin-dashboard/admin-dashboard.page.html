@@ -8,10 +8,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="background: none transparent;">
 <mat-tab-group mat-stretch-tabs>
   <mat-tab label="Device Assign">
-  	<ion-button class="scan" (click)="scanner()">Scan</ion-button>
+    <div class="circle" (click)="scanner()">Scan</div>
+    <p class="center"> Tap to scan</p>
 
   </mat-tab>
   <mat-tab label="Assigned View">

@@ -13,6 +13,7 @@ export class AdminDashboardPage implements OnInit {
 
 userAssigned:any=[]
 loginData:any
+scannedData:any=[]
 
   constructor(
     private api:ApiService,
@@ -56,25 +57,29 @@ refreshUserAssigned()
 
 
 scanner(){
+  console.log("scan try")
   this.qrScanner.prepare()
   .then((status: QRScannerStatus) => {
      if (status.authorized) {
        // camera permission was granted
-
+       console.log("scan inside")
 
        // start scanning
        let scanSub = this.qrScanner.scan().subscribe((text: string) => {
          console.log('Scanned something', text);
-
+         this.scannedData=text
          this.qrScanner.hide(); // hide camera preview
          scanSub.unsubscribe(); // stop scanning
+         console.log("scan inside closed")
        });
 
      } else if (status.denied) {
+       console.log("scan not allowed")
        // camera permission was permanently denied
        // you must use QRScanner.openSettings() method to guide the user to the settings page
        // then they can grant the permission from there
      } else {
+       console.log("scan else loop")
        // permission was denied, but not permanently. You can ask for permission again at a later time.
      }
   })
